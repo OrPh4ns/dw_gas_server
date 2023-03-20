@@ -342,7 +342,7 @@ AND d.year IN (SELECT YEAR(CURRENT_TIMESTAMP))');
     {
         try
         {
-            $maxToday = DB::prepared('SELECT YEAR, MONTH, DAY, HOUR, MINUTE, second FROM date_dim ORDER BY date_id LIMIT 1;');
+            $maxToday = DB::prepared('SELECT YEAR, MONTH, DAY, HOUR, MINUTE, second FROM date_dim ORDER BY date_id desc LIMIT 1;');
             $maxToday->execute();
             return $maxToday->fetch();
         }catch (PDOException $e)
@@ -352,6 +352,22 @@ AND d.year IN (SELECT YEAR(CURRENT_TIMESTAMP))');
         }
     }
 
+    /**
+     * @return false|mixed
+     */
+    public static function getFirstDate(): mixed
+    {
+        try
+        {
+            $maxToday = DB::prepared('SELECT YEAR, MONTH, DAY, HOUR, MINUTE, second FROM date_dim ORDER BY date_id asc LIMIT 1;');
+            $maxToday->execute();
+            return $maxToday->fetch();
+        }catch (PDOException $e)
+        {
+            self::doDebug($e->getMessage());
+            return false;
+        }
+    }
 
     /**
      * @return false|mixed

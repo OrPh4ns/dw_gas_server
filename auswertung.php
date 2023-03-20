@@ -241,6 +241,17 @@ spl_autoload_register(function ($className)
                         </ul>
                     </div>
 
+                    <!-- 20.03.2022 -->
+                    <!-- First Date -->
+                    <div class="col-sm-4 text-center" style="margin-top: 20px;">
+                        <ul class="list-group">
+                            <li class="list-group-item heading">
+                                <h1 style="font-size: 25px;">Erste Erhebung<br></h1><span
+                                        <?php $date = Statistics::getFirstDate(); ?>
+                                        class="price" style="font-weight: bold;"><?php echo $date[0]."/"."$date[1]"."/".$date[2]."<br>".$date[3].":".$date[4];?></span>
+                            </li>
+                        </ul>
+                    </div>
 
                     <!-- 24.11.2022 -->
                     <!-- Last Petrol Station -->
