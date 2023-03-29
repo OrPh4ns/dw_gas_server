@@ -14,6 +14,7 @@ if(isset($_GET['graf']))
         $e10 = substr(Statistics::getAVGE10()[0], 0,4);
         $diesel = substr(Statistics::getAVGDiesel()[0], 0,4);
         $list = array("e5"=>$e5,"e10"=>$e10, "diesel"=>$diesel);
+        header("Content-Type: application/json");
         print_r(json_encode($list));
     }
     else if($_GET['graf']==2)
@@ -26,6 +27,7 @@ if(isset($_GET['graf']))
         {
             $list += array($i=>substr($obj[$i]['price'], 0,4));
         }
+        header("Content-Type: application/json");
         print_r(json_encode($list));
     }
 }
